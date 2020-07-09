@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Start<input type="text" id="start">
+    End&nbsp;&nbsp;<input type="text" id="end">
+    <br><br>
+    <button type="submit" onclick="myfunction()">find</button>
+    
+    <p>Even Numbers are: <span id="demo1"></span></p>
+    <p>Odd Numbersa are:<span id="demo2"></span></p>
+    <script>
+        function myfunction(){
+           var s=parseInt(document.getElementById("start").value);
+           var e=parseInt(document.getElementById("end").value);
+           var i;
+            for(i=s;i<e;i++){
+                if(i%2==0){
+                    document.getElementById("demo1").innerHTML +=parseInt(i)+" ";
+                }
+                else{
+                    document.getElementById("demo2").innerHTML +=parseInt(i)+" ";
+                }
+            }
+        }
+        
+
+    </script>
+</body>
+</html>
