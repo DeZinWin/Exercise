@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="value1"></p>
+    <input type="number" id="value2"></p>
+   
+
+    <button type="submit" onclick="add()">+</button>
+    <button type="submit" onclick="sub()">-</button>
+    <button type="submit" onclick="mul()">*</button>
+    
+    <button type="submit" onclick="div()">/</button>
+
+    <p>The Value is<span id="demo"></span></p>
+    
+    <script>
+        function add(){
+            var value1=parseInt(document.getElementById("value1").value) ;
+            var value2=parseInt(document.getElementById("value2").value);
+            var add=value1+value2;
+
+           document.getElementById("demo").innerHTML =add; 
+        }
+        function sub(){
+            var value1=parseInt(document.getElementById("value1").value) ;
+            var value2=parseInt(document.getElementById("value2").value);
+            var substract=value1-value2;
+
+           document.getElementById("demo").innerHTML =substract; 
+        }
+        function mul() {
+        var value1=parseInt(document.getElementById("value1").value) ;
+        var value2=parseInt(document.getElementById("value2").value);
+        var multiple=value1*value2;
+
+        document.getElementById("demo").innerHTML =multiple;
+        }
+        function div() {
+        var value1=parseInt(document.getElementById("value1").value) ;
+        var value2=parseInt(document.getElementById("value2").value);
+        var divide=value1/value2;
+
+        document.getElementById("demo").innerHTML =divide;
+        }
+        
+    </script>    
+</body>
+</html>

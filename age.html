@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" id="d" >
+    <button type="submit" onclick="agefun()">check age</button>
+
+    
+
+    
+    <script>
+        function agefun(){
+
+           var d = new Date();
+           var current=d.getFullYear();
+           var old=document.getElementById("d").value;
+           var old_date=new Date(old);
+           var result=old_date.getFullYear();
+
+           var year=current-old_date;
+           
+           if(year<18){
+               alert("Your age is under 18");
+           }
+           else{
+              alert("Your age is over 18");
+           }
+        }
+    </script>
+        
+</body>
+</html>
