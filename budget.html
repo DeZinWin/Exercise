@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+            var b=0;
+            var t=0;
+            var v=0;
+            var total=0;
+            var finalresult=0;
+        $(document).ready(function(){
+           
+            $("#btn1").click(function(){
+            b=parseInt($("#txt1").val());
+            $("#budget").html("<label><h3>$"+b+"</h3></label>");
+            $("#balance").html("<h3>$"+b+"</h3>");
+            });
+
+            $("#btn2").click(function(){
+
+                t=$("#txt2").val();
+                $("#exptitle").append("<label>-"+t+"</label><br>");
+                $("#exptitle").css({"color":"red","font-size": "150%"});
+
+
+                v=parseInt($("#txt3").val());
+                $("#expvalue").append("<label>"+v+"</label><br>");
+                $("#expvalue").css({"color":"red","font-size":"150%"});
+                total+=v;
+                $("#exptotal").html("<h3>$"+total+"</h3>");
+
+                finalresult=b-total;
+                $("#balance").html("<h3>$"+finalresult+"</h3>");
+
+            });
+ 
+        });
+    </script>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 30px;
+            padding: 10px;
+            background-color:whitesmoke;
+           
+        }
+
+        .grid-container > div {
+            
+           color:purple;
+            
+        }
+        .first{
+            border:3px solid green;
+            width: 200px;
+            height: 130px;
+            margin-left: 15px;
+            padding-left: 10px;
+            box-shadow: 3px 3px 1px greenyellow;
+        }
+
+        .second{
+            border: 2px solid red;
+            width: 200px;
+            height:180px;
+            margin-left: 15px;
+            padding-left: 10px;
+            box-shadow: 3px 3px 1px orangered;
+        }
+    </style>
+    
+</head>
+<body>
+    <h2 style="margin-left: 15px;">BUDGET APP</h2>
+    <div class="grid-container">
+         <div class="first">
+             <p style="font-size: 35;"><b>Please Enter your Budget</b></p>
+             <input type="text" id="txt1" size=36 style="border-color: darkolivegreen;"><br><br>
+             <button type="button" id="btn1">Calculate</button>
+         </div>
+    
+         <div style="width: 100px;height: 100px;">
+            <h3>BUDGET</h3>
+            <i class="fa fa-money" style="font-size:50px;color:blue"></i><br>
+            <p id="budget"></p>
+            
+        </div>
+
+        <div style="width: 100px;height: 100px;">
+            <h3>EXPENSES</h3>
+            <i class="fa fa-credit-card" style="font-size:48px;color:blue"></i><br>
+            <p id="exptotal"></p>
+           
+        </div>
+        <div style="width: 100px;height: 100px;">
+            <h3>BALANCE</h3>
+            <i class="fa fa-dollar" style="font-size:48px;color:blue"></i><br>
+            <p id="balance"></p>
+        </div>
+
+        <div class="second">
+            <p style="font-size: 35;margin: 5px 0 3px 0;"><b>Please Enter your Expense</b></p>
+            <input type="text" id="txt2" size=36 style="border-color: brown;"><br><br>
+            <p style="font-size: 35;margin-bottom: 5px;"><b>Please Enter Expense Amount</b></p>
+            <input type="text" id="txt3" size=36 style="border-color: brown;"><br><br>
+            <button type="submit" id="btn2">Add Expense</button>
+         </div>
+        
+        <div style="width: 100px;height: 100px;">
+            <p style="font-size: 30;"><b>Expense Title</b></p>
+            <p id="exptitle"></p>
+        </div>
+       
+        <div style="width: 100px;height: 100px;">
+            <p style="font-size:30;"><b>Expense Value</b></p>
+            <p id="expvalue"></p>
+        </div>    
+       
+        <div style="padding:50px 0 0 0;width: 100px;height: 100px;">  
+
+            <i class="fa fa-edit" style="font-size:32px;color:blue"></i>
+            <i class="fa fa-trash" style="font-size:32px;color:red"></i>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
