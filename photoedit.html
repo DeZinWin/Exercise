@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div>
+    <img onmouseover='picture("src","cute-baby.jpg")' src="cute-baby.jpg" width="50" height="50" >
+    <img onmouseover='picture("src","poll.jpg")' src="poll.jpg" width="50" height="50">
+    <img  onmouseover='picture("src","elephent.jpg")' src="elephent.jpg" width="50" height="50">
+    </div>
+   
+    <p><img src="download.jpg" id="img"></p> 
+
+    <script>
+        var image= document.getElementById("img");
+        var p1=0;
+        var p2=0;
+        function picture(p1,p2){
+
+           // document.getElementById("img").src= "cute-baby.jpg";
+            image.setAttribute(p1,p2);
+        }
+        /*function picture2(){
+            document.getElementById("img").src= "poll.jpg";
+            img.setAttribute("src","poll.jpg");
+        }
+        function picture3(){
+            document.getElementById("img").src= "elephent.jpg";
+            img.setAttribute("src","elephent.jpg");
+        }*/
+    </script>
+
+</body>
+</html>
