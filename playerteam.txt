@@ -1,0 +1,142 @@
+
+mysql> select * from team;
++----+-------------+-------------+
+| id | name        | foundeddate |
++----+-------------+-------------+
+|  1 | ManU        | 1880-12-05  |
+|  2 | Livepool    | 1892-04-03  |
+|  3 | Chelsea     | 1905-03-10  |
+|  4 | Arsenan     | 1886-06-10  |
+|  5 | Real Madrit | 1902-03-06  |
+|  6 | Barcelona   | 1899-11-29  |
+|  7 | Juventus    | 1897-11-01  |
+|  8 | Laliga      | 1929-01-01  |
+|  9 | Mancity     | 1880-08-07  |
+| 10 | Everton     | 1885-04-02  |
++----+-------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from player;
++----------+-------------+---------+------+--------+--------+--------+
+| playerid | name        | jersyno | age  | salary | teamId | height |
++----------+-------------+---------+------+--------+--------+--------+
+|        1 | Ronaldo     |       7 |   35 | 500000 |      1 | 6      |
+|        2 | Aleix       |      13 |   30 | 400000 |      1 | 6.1    |
+|        3 | Paul        |      13 |   29 | 400000 |      1 | 5.1    |
+|        4 | Marcus      |      20 |   27 | 300000 |      1 | 5.5    |
+|        5 | Bruno       |       8 |   29 | 500000 |      1 | 5.9    |
+|        6 | Daniel      |      11 |   39 | 500000 |      2 | 5.9    |
+|        7 | Roberto     |       1 |   30 | 400000 |      2 | 6.1    |
+|        8 | Trent       |       3 |   25 | 400000 |      2 | 5.5    |
+|        9 | Alisson     |       4 |   25 | 400000 |      2 | 5.7    |
+|       10 | Kepa        |       5 |   26 | 400000 |      3 | 5.8    |
+|       11 | Tammy       |       7 |   24 | 600000 |      3 | 5.8    |
+|       12 | NGolo       |       9 |   37 | 600000 |      3 | 6      |
+|       13 | Anderas     |       4 |   37 | 600000 |      4 | 6      |
+|       14 | William     |       5 |   27 | 400000 |      4 | 5.6    |
+|       15 | Matteo      |      99 |   21 | 400000 |      4 | 5.9    |
+|       16 | Leno        |      98 |   24 | 300000 |      5 | 5.9    |
+|       17 | Lucas       |      88 |   23 | 300000 |      5 | 5.8    |
+|       18 | Hector      |      77 |   22 | 300000 |      6 | 5.7    |
+|       19 | Sead        |      55 |   25 | 300000 |      6 | 5.5    |
+|       20 | Reiss       |      45 |   23 | 350000 |      7 | 5.9    |
+|       21 | Joe Willock |       1 |   28 | 450000 |      7 | 6.1    |
+|       22 | Sokratis    |       9 |   29 | 400000 |      8 | 6.1    |
+|       25 | Ainsley     |       3 |   29 | 350000 |      8 | 6.2    |
+|       26 | Zech        |      22 |   29 | 350000 |      9 | 6.2    |
+|       27 | Ozil        |      21 |   24 | 350000 |      9 | 6.3    |
+|       28 | Matthew     |     111 |   28 | 300000 |     10 | 6.1    |
+|       29 | Tyreece     |     121 |   30 | 400000 |     10 | 6.2    |
++----------+-------------+---------+------+--------+--------+--------+
+27 rows in set (0.00 sec)
+
+mysql> select * from player where teamid=1;
++----------+---------+---------+------+--------+--------+--------+
+| playerid | name    | jersyno | age  | salary | teamId | height |
++----------+---------+---------+------+--------+--------+--------+
+|        1 | Ronaldo |       7 |   35 | 500000 |      1 | 6      |
+|        2 | Aleix   |      13 |   30 | 400000 |      1 | 6.1    |
+|        3 | Paul    |      13 |   29 | 400000 |      1 | 5.1    |
+|        4 | Marcus  |      20 |   27 | 300000 |      1 | 5.5    |
+|        5 | Bruno   |       8 |   29 | 500000 |      1 | 5.9    |
++----------+---------+---------+------+--------+--------+--------+
+5 rows in set (0.06 sec)
+
+mysql> select * from Player where salary>500000;
++----------+---------+---------+------+--------+--------+--------+
+| playerid | name    | jersyno | age  | salary | teamId | height |
++----------+---------+---------+------+--------+--------+--------+
+|       11 | Tammy   |       7 |   24 | 600000 |      3 | 5.8    |
+|       12 | NGolo   |       9 |   37 | 600000 |      3 | 6      |
+|       13 | Anderas |       4 |   37 | 600000 |      4 | 6      |
++----------+---------+---------+------+--------+--------+--------+
+3 rows in set (0.00 sec)
+mysql> select name,(select SUM(salary) from player where team.id=player.teamId)as salary from Team;
++-------------+---------+
+| name        | salary  |
++-------------+---------+
+| ManU        | 2100000 |
+| Livepool    | 1700000 |
+| Chelsea     | 1600000 |
+| Arsenan     | 1400000 |
+| Real Madrit |  600000 |
+| Barcelona   |  600000 |
+| Juventus    |  800000 |
+| Laliga      |  750000 |
+| Mancity     |  700000 |
+| Everton     |  700000 |
++-------------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select * from player where height<5;
+Empty set (0.05 sec)
+
+mysql> select name,(select AVG(salary) from player where team.id=player.teamId)as salary from Team;
++-------------+-------------+
+| name        | salary      |
++-------------+-------------+
+| ManU        | 420000.0000 |
+| Livepool    | 425000.0000 |
+| Chelsea     | 533333.3333 |
+| Arsenan     | 466666.6667 |
+| Real Madrit | 300000.0000 |
+| Barcelona   | 300000.0000 |
+| Juventus    | 400000.0000 |
+| Laliga      | 375000.0000 |
+| Mancity     | 350000.0000 |
+| Everton     | 350000.0000 |
++-------------+-------------+
+10 rows in set (0.05 sec)
+
+mysql> select name,salary from player where salary in (select MIN(salary)as salary from player);
++---------+--------+
+| name    | salary |
++---------+--------+
+| Marcus  | 300000 |
+| Leno    | 300000 |
+| Lucas   | 300000 |
+| Hector  | 300000 |
+| Sead    | 300000 |
+| Matthew | 300000 |
++---------+--------+
+6 rows in set (0.02 sec)
+mysql> select name,salary from player where salary in (select MAX(salary)as salary from player);
++---------+--------+
+| name    | salary |
++---------+--------+
+| Tammy   | 600000 |
+| NGolo   | 600000 |
+| Anderas | 600000 |
++---------+--------+
+3 rows in set (0.00 sec)
+mysql> select name,age,salary from player where age>30 and salary>200000;
++---------+------+--------+
+| name    | age  | salary |
++---------+------+--------+
+| Ronaldo |   35 | 500000 |
+| Daniel  |   39 | 500000 |
+| NGolo   |   37 | 600000 |
+| Anderas |   37 | 600000 |
++---------+------+--------+
+4 rows in set (0.00 sec)
+
